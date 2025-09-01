@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/cart")
 public class ShoppingCartController {
 
-	private PricingService pricingService;
+	private final PricingService pricingService;
 
-	private ShoppingCartService shoppingCartService;
+	private final ShoppingCartService shoppingCartService;
 
 	public ShoppingCartController(PricingService pricingService, ShoppingCartService shoppingCartService) {
 		this.pricingService = pricingService;
@@ -33,8 +33,8 @@ public class ShoppingCartController {
 
 	@PostMapping("/total")
 	public ResponseEntity<ShoppingCartTotalResponse> total(@Valid @RequestBody ShoppingCartRequest req) {
-		int pence = pricingService.calculateTotalPrice(req.getItems());
-		return ResponseEntity.ok(new ShoppingCartTotalResponse(pence));
+		int price = pricingService.calculateTotalPrice(req.getItems());
+		return ResponseEntity.ok(new ShoppingCartTotalResponse(price));
 	}
 
 	@PostMapping("/{cartId}/add")

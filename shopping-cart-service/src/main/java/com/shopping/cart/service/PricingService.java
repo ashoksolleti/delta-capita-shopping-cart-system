@@ -51,10 +51,4 @@ public class PricingService {
 		return chargeableCount * item.price();
 	}
 
-	public String getFormattedPrice(int pence) {
-		BigDecimal pounds = BigDecimal.valueOf(pence).divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
-		return "£" + pounds.toPlainString();
-	}
-
-
 }
