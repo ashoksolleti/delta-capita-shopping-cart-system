@@ -1,0 +1,16 @@
+services:
+  java-backend:
+    build: ./java-backend
+    ports:
+      - "8080:8080"
+  js-gateway:
+    build: ./js-gateway
+    environment:
+      - JAVA_BASE_URL=http://java-backend:8080
+      # Optional basic auth:
+      # - BASIC_USER=demo
+      # - BASIC_PASS=demo123
+    ports:
+      - "3000:3000"
+    depends_on:
+      - java-backend
