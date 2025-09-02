@@ -1,35 +1,36 @@
 package com.shopping.cart.web;
 
-import com.shopping.cart.dto.ShoppingCartRequest;
-import com.shopping.cart.dto.ShoppingCartTotalResponse;
-import com.shopping.cart.model.ShoppingCart;
-import com.shopping.cart.service.PricingService;
-import com.shopping.cart.service.ShoppingCartService;
-
-import jakarta.validation.Valid;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.shopping.cart.dto.ShoppingCartRequest;
+import com.shopping.cart.dto.ShoppingCartTotalResponse;
+import com.shopping.cart.service.impl.PricingService;
+import com.shopping.cart.service.impl.ShoppingCartService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/cart")
 public class ShoppingCartController {
 
-	private final PricingService pricingService;
+	@Autowired
+	private PricingService pricingService;
 
-	private final ShoppingCartService shoppingCartService;
+	@Autowired
+	private ShoppingCartService shoppingCartService;
 
-	public ShoppingCartController(PricingService pricingService, ShoppingCartService shoppingCartService) {
-		this.pricingService = pricingService;
-		this.shoppingCartService = shoppingCartService;
-	}
 
 	@PostMapping("/total")
 	public ResponseEntity<ShoppingCartTotalResponse> total(@Valid @RequestBody ShoppingCartRequest req) {
@@ -40,9 +41,6 @@ public class ShoppingCartController {
 	@PostMapping("/{cartId}/add")
 	public Map<String, Object> addItem(@PathVariable String cartId, @RequestBody Map<String, String> body) {
 		String item = body.get("item");
-		if (item == null || item.isBlank()) {
-			return Map.of("error", "Missing 'item' field in request");
-		}
 		List<String> updatedCart = shoppingCartService.addItem(cartId, item);
 		return Map.of("cartId", cartId, "message", "Added " + item, "cart", updatedCart);
 	}

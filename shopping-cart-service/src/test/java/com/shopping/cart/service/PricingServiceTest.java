@@ -1,15 +1,14 @@
-package com.example.cart.service;
+package com.shopping.cart.service;
 
 import org.junit.jupiter.api.Test;
 
-import com.shopping.cart.service.PricingService;
 
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PricingServiceTest {
 
-    private final PricingService pricingService = new PricingService();
+    PricingServiceImpl pricingService = new PricingServiceImpl();
     
     @Test
     void testUnknownItem() {

@@ -2,21 +2,22 @@ package com.shopping.cart.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shopping.cart.repository.ShoppingCartRepository;
+import com.shopping.cart.service.impl.PricingService;
+import com.shopping.cart.service.impl.ShoppingCartService;
 
 @Service
-public class ShoppingCartService {
+public class ShoppingCartServiceImpl implements ShoppingCartService {
 
-	private final ShoppingCartRepository cartRepository;
+	@Autowired
+	private ShoppingCartRepository cartRepository;
 	
-	private final PricingService pricingService;
+	@Autowired
+	private PricingService pricingService;
 
-    public ShoppingCartService(ShoppingCartRepository cartRepository,PricingService pricingService) {
-        this.cartRepository = cartRepository;
-        this.pricingService = pricingService;
-    }
 
     public List<String> addItem(String cartId, String item) {
         return cartRepository.addItem(cartId, item);

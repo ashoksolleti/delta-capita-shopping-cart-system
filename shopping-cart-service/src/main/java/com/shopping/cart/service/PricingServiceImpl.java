@@ -1,7 +1,5 @@
 package com.shopping.cart.service;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -9,9 +7,10 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.shopping.cart.model.Item;
+import com.shopping.cart.service.impl.PricingService;
 
 @Service
-public class PricingService {
+public class PricingServiceImpl implements PricingService{
 
 	public int calculateTotalPrice(List<String> itemNames) {
 		Map<Item, Integer> itemCounts = new EnumMap<>(Item.class);
