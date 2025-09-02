@@ -1,4 +1,4 @@
-package com.shopping.cart.service;
+package com.shopping.cart.service.impl;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shopping.cart.repository.ShoppingCartRepository;
-import com.shopping.cart.service.impl.PricingService;
-import com.shopping.cart.service.impl.ShoppingCartService;
+import com.shopping.cart.service.PricingService;
+import com.shopping.cart.service.ShoppingCartService;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {

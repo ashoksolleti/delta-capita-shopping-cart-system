@@ -1,4 +1,4 @@
-package com.shopping.cart.service.impl;
+package com.shopping.cart.service;
 
 import java.util.List;
 

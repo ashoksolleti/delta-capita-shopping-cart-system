@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shopping.cart.dto.ShoppingCartRequest;
 import com.shopping.cart.dto.ShoppingCartTotalResponse;
-import com.shopping.cart.service.impl.PricingService;
-import com.shopping.cart.service.impl.ShoppingCartService;
+import com.shopping.cart.service.PricingService;
+import com.shopping.cart.service.ShoppingCartService;
 
 import jakarta.validation.Valid;
 
