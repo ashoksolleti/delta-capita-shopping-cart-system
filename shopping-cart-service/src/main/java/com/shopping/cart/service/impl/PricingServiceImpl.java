@@ -1,4 +1,4 @@
-package com.shopping.cart.service;
+package com.shopping.cart.service.impl;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.shopping.cart.model.Item;
-import com.shopping.cart.service.impl.PricingService;
+import com.shopping.cart.service.PricingService;
 
 @Service
 public class PricingServiceImpl implements PricingService{

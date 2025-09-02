@@ -2,6 +2,7 @@ package com.shopping.cart.service;
 
 import org.junit.jupiter.api.Test;
 
+import com.shopping.cart.service.impl.PricingServiceImpl;
 
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
